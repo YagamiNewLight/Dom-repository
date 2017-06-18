@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style></style>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>按钮1：点我创建一个div里面包裹一个span元素</button>
+<button>按钮2：点我创建一个img元素</button>
+<button>按钮3：找到span元素在控制台打印出来</button>
+<button>按钮4：找到span元素的父元素在控制台打印出来</button>
+<button>按钮5：找到span元素的子元素在控制台打印出来</button>
+<button>按钮6：找到span元素的文本在控制台打印出来</button>
+<button>按钮7：点我给span元素添加一个id</button>
+<button>按钮8：点我给span元素添加一个border</button>
+<button>按钮9：点我找到p元素的哥哥</button>
+<button>按钮10：点我把DIV里面的子元素全部删除</button>
+<button>按钮11：给图片添加宽度属性，改变图片的大小</button>
+<article><h1>Hello World
+</h1> <p>我是一个段落，我的大哥是Hello World</p>
+
+
+
+</article>
+<script src="main.js">
+</script>
+<script>
+    var span = dom.create('span','我是span元素里的文本');
+    var div2 = dom.create('div',[span,'我是div里面的文本'],'width:400px;height:400px;border:1px solid blue;');
+    var img = dom.create('img',null,{src:"https://ooo.0o0.ooo/2017/06/15/5942510333cd7.jpg"});
+    var button1 = document.getElementsByTagName('button')[0];
+    button1.addEventListener('click',function() {
+        document.body.appendChild(div2)
+    })
+    var button2 = document.getElementsByTagName('button')[1];
+    button2.addEventListener('click',function() {
+        document.body.appendChild(img)
+    })
+    var button3 = document.getElementsByTagName('button')[2];
+    button3.addEventListener('click',function() {
+        console.log( dom.find('span'))
+    })
+    var button4 = document.getElementsByTagName('button')[3];
+    button4.addEventListener('click',function() {
+        var findSpanParent = dom.findParent('span')
+        console.log(findSpanParent)
+    })
+    var button5 = document.getElementsByTagName('button')[4];
+    button5.addEventListener('click',function() {
+        var findSpanChild = dom.findChildren('span')
+        console.log(findSpanChild)
+    })
+    var button6 = document.getElementsByTagName('button')[5];
+    button6.addEventListener('click',function() {
+        var findSpanText = dom.findText(span)
+        console.log(findSpanText)
+    })
+    var button7 = document.getElementsByTagName('button')[6];
+    button7.addEventListener('click',function() {
+        dom.attr(span,{id:'#wkz'})
+        console.log(span)
+    })
+    var button8 = document.getElementsByTagName('button')[7];
+    button8.addEventListener('click',function() {
+        dom.style(span,'width:200px;height:200px;border:1px solid red;')
+    })
+    var button9 = document.getElementsByTagName('button')[8];
+    button9.addEventListener('click',function() {
+        console.log(dom.bigBrother(document.getElementsByTagName('p')[0]))
+    })
+    var button10 = document.getElementsByTagName('button')[9];
+    button10.addEventListener('click',function() {
+        dom.emptyChild(div2);
+    })
+    var button11= document.getElementsByTagName('button')[10];
+    button11.addEventListener('click',function(){
+        dom.attr(img,{width:400})
+    })
+
+
+</script>
+
+</body>
+
+</html>
